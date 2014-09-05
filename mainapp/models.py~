@@ -1,0 +1,81 @@
+from django.db import models
+from django.contrib.auth.models import User
+
+class userinfo(models.Model):
+    name = models.CharField(max_length=100)
+    surname = models.CharField(max_length=100)
+    age = models.IntegerField(default=0)
+    owner = models.OneToOneField(User)
+    male = models.BooleanField(default=False)
+    workstatus = models.CharField(max_length=100)
+    
+    def __unicode__(self):
+        return self.name
+
+class news(models.Model):
+    name = models.CharField(max_length=100)
+    discription = models.TextField(max_length=200)
+    text = models.TextField(max_length=2000)
+    creationdate = models.DateTimeField(auto_now=False, auto_now_add=True)
+    creator = models.ForeignKey(userinfo)
+    rating = models.IntegerField(default=0)
+    show = models.BooleanField(default=False)
+    
+    def __unicode__(self):
+        return self.name
+
+    class Meta:
+        ordering = ["-creationdate"]
+
+class project(models.Model):
+    name = models.CharField(max_length=100)
+    discription = models.TextField(max_length=200)
+    text = models.TextField(max_length=2000)
+    show = models.BooleanField(default=False)
+    creationdate = models.DateTimeField(auto_now=False, auto_now_add=True)
+    rating = models.IntegerField(default=0)
+    
+    def __unicode__(self):
+        return self.name
+
+    class Meta:
+        ordering = ["-creationdate"]
+
+class comment(models.Model):
+    text = models.TextField(max_length=2000)
+    creator = models.ForeignKey(User)
+    creationdate = models.DateTimeField(auto_now=False, auto_now_add=True)
+    news = models.ForeignKey(news)
+    rating = models.IntegerField(default=0)
+    show = models.BooleanField(default=False)
+
+    def __unicode__(self):
+        return self.text
+
+    class Meta:
+        ordering = ["-creationdate"]
+
+class projectmember(models.Model):
+    owner = models.OneToOneField(User)
+    project = models.OneToOneField(project)
+    status = models.CharField(max_length=100)
+    importance = models.IntegerField(default=0)
+
+class baseinfo(models.Model):
+    importance = models.IntegerField(default=0)
+    name = models.CharField(max_length=100)
+    value = models.CharField(max_length=20)
+    show = models.BooleanField(default=False)
+    
+    def __unicode__(self):
+        return self.name
+
+    class Meta:
+        ordering = ["-importance"]
+
+class voice(models.Model):
+    owner = models.OneToOneField(User)
+    target = models.IntegerField(default=0)
+    project = models.OneToOneField(project)
+    comment = models.OneToOneField(comment)
+    news = models.OneToOneField(news)

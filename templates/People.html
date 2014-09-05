@@ -1,0 +1,77 @@
+{% extends "News.html" %}
+{% block body %}
+        <div class="col-xs-12 col-sm-9">
+          <ul class="nav nav-tabs" id="myTab">
+            <li class="active"><a href="#sciencesection" data-toggle="tab">Научный отдел</a></li>
+            <li><a href="#supplessection" data-toggle="tab">Отдел снабжения</a></li>
+            <li><a href="#medicinesection" data-toggle="tab">Медицинский отдел</a></li>
+            <li><a href="#policesection" data-toggle="tab">Служба безопасности</a></li>
+          </ul>
+          <div class="tab-content">
+
+            <div class="tab-pane active" id="sciencesection">
+                {% if sciencepeople %}
+                  {% for n in sciencepeople %}
+                    <div class="well">
+                      <a href="/profile/{{ n.owner.id }}/">{{ n.name }} </a>
+                      <p>{{ n.status }}</p>
+                    </div>
+                  {% endfor %}
+                {% else %}
+               <div class="well">
+                <h4><p class="text-error">В этом отделе ещё нет людей</p></h4>
+               </div>
+              {% endif %}
+            </div>
+
+            <div class="tab-pane" id="supplessection">
+              {% if supplespeople %}
+               {% for n in supplespeople %}
+                <div class="well">
+                 <a href="/profile/{{ n.owner.id }}/">{{ n.name }} {{ n.surname }} {{ n.middlename }}</a>, 
+                 {{ n.workstatus }}
+                 <p>{{ n.status }}</p>
+                </div>
+               {% endfor %}
+              {% else %}
+               <div class="well">
+                <h4><p class="text-error">В этом отделе ещё нет людей</p></h4>
+               </div>
+              {% endif %}
+            </div>
+
+            <div class="tab-pane" id="medicinesection">
+              {% if medicinepeople %}
+               {% for n in medicinepeople %}
+                <div class="well">
+                 <a href="/profile/{{ n.owner.id }}/">{{ n.name }} </a>
+                 <p>{{ n.status }}</p>
+                </div>
+               {% endfor %}
+              {% else %}
+               <div class="well">
+                <h4><p class="text-error">В этом отделе ещё нет людей</p></h4>
+               </div>
+              {% endif %}
+            </div>
+
+            <div class="tab-pane" id="policesection">
+              {% if policepeople %}
+               {% for n in policepeople %}
+                <div class="well">
+                 <a href="/profile/{{ n.owner.id }}/">{{ n.name }} {{ n.lastname }} {{ n.middlename }} </a>
+                 <p>{{ n.status }}</p>
+                </div>
+               {% endfor %}
+              {% else %}
+               <div class="well">
+                <h4><p class="text-error">В этом отделе ещё нет людей</p></h4>
+               </div>
+              {% endif %}
+            </div>
+
+          </div>
+         </div>
+
+{% endblock %}
+

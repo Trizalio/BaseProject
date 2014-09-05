@@ -1,0 +1,111 @@
+{% extends "News.html" %}
+{% block body %}
+        <div class="col-xs-12 col-sm-9">
+          <ul class="nav nav-tabs" id="myTab">
+            <li class="active"><a href="#common" data-toggle="tab">Общая информация</a></li>
+            <li><a href="#work" data-toggle="tab">Деятельность</a></li>
+            <li><a href="#projects" data-toggle="tab">Проекты</a></li>
+            {% if showhealth or self %}
+              <li><a href="#health" data-toggle="tab">Здоровье</a></li>
+            {% endif %}
+            {% if self %}
+              <li><a href="#closed" data-toggle="tab">Неигровая информация</a></li>
+            {% endif %}
+          </ul>
+
+          <div class="tab-content">
+            <div class="tab-pane active" id="common">
+              <div class="well">
+               <!--<p><b>Имя: {{ profile.name }}</b></p>
+               <p><b>Фамилия: {{ profile.surname }}</b></p>-->
+               <p><b>ФИО:</b> {{ profile.surname }} {{ profile.name }} {{ profile.middlename }}</p>
+               <p><b>Возраст:</b> {{ profile.age }}</p>
+               <p><b>Пол:</b> {% if profile.male %}Мужской{% endif %}{% if not profile.male %}Женский{% endif %}
+              </div>
+            </div>
+            <div class="tab-pane" id="work">
+              <div class="well">
+               <p><b>Должность:</b> {{ profile.workstatus }}</p>
+               <p><b>Класс допуска:</b> {{ profile.access }}</p>
+               <p><b>Специальность:</b> {{ profile.education }}</p>
+              </div>
+            </div>
+
+            {% if showhealth or self %}
+              <div class="tab-pane" id="health">
+                <div class="well">
+                 <p><b>HP(пункты здоровья)(максимум):</b> </p>
+                 <br>
+                 <p><b>Импланты:</b> </p>
+                 <p><b>Группа крови:</b> </p>
+                 <p><b>Заболевания:</b> </p>
+                 <p><b>Терапия:</b> </p>
+                 <p><b>Дата последнего осмотра:</b> </p>
+                </div>
+              </div>
+            {% endif %}
+
+            <div class="tab-pane" id="projects">
+              {% if projectmembers %}
+               {% for n in projectmembers %}
+                <div class="well">
+                 <a href="/project/{{ n.project_id }}/">{{ n.project.name }} </a>
+                 <p>{{ n.status }}</p>
+                </div>
+               {% endfor %}
+              {% else %}
+               <div class="well">
+                <h4><p class="text-error">На проектах не заригистрирован</p></h4>
+               </div>
+              {% endif %}
+            </div>
+
+            {% if self %}
+              <div class="tab-pane" id="closed">
+                <div class="well">
+                 <!--<p><b>Имя: {{ profile.name }}</b></p>
+                 <p><b>Фамилия: {{ profile.surname }}</b></p>-->
+                 <p><b>Квента:</b></p>
+                 <p><b>Квесты(задачи на игру):</b></p>
+                 <p><b>Сдан ли взнос:</b></p>
+                </div>
+              </div>
+            {% endif %}
+
+          </div>
+         </div>
+
+
+
+         <!--<div class="col-xs-12 col-sm-12">
+          <div class="well">
+           <p><b>Имя: {{ profile.name }}</b></p>
+           <p><b>Фамилия: {{ profile.surname }}</b></p>
+           <p><b>ФИО:</b> {{ profile.surname }} {{ profile.name }}</p>
+           <p><b>Возраст:</b> {{ profile.age }}</p>
+           <p>Пол: {% if profile.male %}Мужской{% endif %}{% if not profile.male %}Женский{% endif %}</p>
+          </div>
+         </div>
+
+         <div class="col-xs-12 col-sm-12">
+          <div class="well">
+           <p>Должность: {{ profile.workstatus }}</p>
+           <p>Класс допуска: </p>
+           <p>Специальность: </p>
+          </div>
+         </div>
+
+         <div class="col-xs-12 col-sm-12">
+      		<div class="well">
+           <p>HP(пункты здоровья): </p>
+           <br>
+      		 <p>Импланты: </p>
+      		 <p>Группа крови: </p>
+           <p>Заболевания: </p>
+           <p>Терапия: </p>
+           <p>Дата последнего осмотра: </p>
+        	</div>
+         </div>-->
+
+{% endblock %}
+

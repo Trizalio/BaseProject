@@ -1,0 +1,13 @@
+[Sun Feb 02 23:48:49 2014] [error] [client 127.0.0.1] mod_wsgi (pid=18613): Exception occurred processing WSGI script '/home/base_project/engine/wsgi.py'.
+[Sun Feb 02 23:48:49 2014] [error] [client 127.0.0.1] Traceback (most recent call last):
+[Sun Feb 02 23:48:49 2014] [error] [client 127.0.0.1]   File "/usr/lib/python2.7/dist-packages/django/core/handlers/wsgi.py", line 219, in __call__
+[Sun Feb 02 23:48:49 2014] [error] [client 127.0.0.1]     self.load_middleware()
+[Sun Feb 02 23:48:49 2014] [error] [client 127.0.0.1]   File "/usr/lib/python2.7/dist-packages/django/core/handlers/base.py", line 39, in load_middleware
+[Sun Feb 02 23:48:49 2014] [error] [client 127.0.0.1]     for middleware_path in settings.MIDDLEWARE_CLASSES:
+[Sun Feb 02 23:48:49 2014] [error] [client 127.0.0.1]   File "/usr/lib/python2.7/dist-packages/django/utils/functional.py", line 184, in inner
+[Sun Feb 02 23:48:49 2014] [error] [client 127.0.0.1]     self._setup()
+[Sun Feb 02 23:48:49 2014] [error] [client 127.0.0.1]   File "/usr/lib/python2.7/dist-packages/django/conf/__init__.py", line 42, in _setup
+[Sun Feb 02 23:48:49 2014] [error] [client 127.0.0.1]     self._wrapped = Settings(settings_module)
+[Sun Feb 02 23:48:49 2014] [error] [client 127.0.0.1]   File "/usr/lib/python2.7/dist-packages/django/conf/__init__.py", line 95, in __init__
+[Sun Feb 02 23:48:49 2014] [error] [client 127.0.0.1]     raise ImportError("Could not import settings '%s' (Is it on sys.path?): %s" % (self.SETTINGS_MODULE, e))
+[Sun Feb 02 23:48:49 2014] [error] [client 127.0.0.1] ImportError: Could not import settings 'settings' (Is it on sys.path?): No module named settings

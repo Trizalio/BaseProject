@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="utf-8">
+    <title>Ask Pupkin, from Vasiliev</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="/css/bootstrap.css" rel="stylesheet">
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+    </style>
+    <link href="/css/bootstrap-responsive.css" rel="stylesheet">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="../assets/js/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
+      <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
+                    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
+                                   <link rel="shortcut icon" href="../assets/ico/favicon.png">
+  </head>
+
+  <body>
+{% block top %}
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="brand">Ask Pupkin</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="active"><a href="/home/">Домой</a></li>
+              <li class="active"><a href="/home/latest/">Последние</a></li>
+              <li class="active"><a href="/home/popular/">Популярные</a></li>
+              <li class="active"><a href="/about/">О нас</a></li>
+            </ul>
+                   {% block login %}
+
+                    {% if anonim or error%}
+            <form class="navbar-form pull-right">
+	      <a href="/accounts/login/" class="btn btn-primary">Войти</a>
+	      <a href="/add/user/" class="btn btn-primary">Зарегистрироваться</a>
+            </form>
+                    {% endif %}
+
+		    {% if not anonim %}
+                    <div class="navbar-form pull-right">  
+                         <div class="navbar-form pull-right">
+                            <ul class="nav nav-pills">
+                                <li class="dropdown">
+                                    <a class="dropdown-toggle"
+                                       data-toggle="dropdown"
+                                       href="/home/">
+                                        {{ username }}
+                                        <b class="caret"></b>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <!-- links -->
+                                        <li><a tabindex="-1" href="/accounts/profile/{{ id }}/">Профиль</a></li>
+                                        <li><a tabindex="-2" href="/accounts/logout/">Выйти</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+
+                     {% endif %}
+                    </div>
+
+
+
+			 {% endblock %}
+
+                </div><!--/.nav-collapse -->
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+<div class="container">
+
+    <div class="container">
+
+      <!-- Main hero unit for a primary marketing message or call to action -->
+      <div class="hero-unit">
+        <h1>Good news, everyone!</h1>
+        <p>Теперь вы можете задать вопрос Пупкину! </p>
+        <a href="/add/question/" class="btn btn-large btn-primary">Спросить</a>
+      </div>
+
+<div class="container-fluid">
+    <div class="row-fluid">
+
+
+            {% block content %}
+
+            {% block alert %}
+
+            {% if error_add_question %}
+                <div class="alert alert-error">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <strong>Error</strong> Только авторизованные пользователи могут задавать вопросы
+                </div>
+            {% endif %}
+
+            {% if error_add_answer %}
+                    <div class="alert alert-error">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        <strong>Error</strong> Только авторизованные пользователи могут отвечать на вопросы
+                    </div>
+            {% endif %}
+
+            {% if anonim %}
+                <div class="alert alert-info">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    Вы не авторизованны
+                </div>
+             {% endif %}
+
+            {% if ok_question %}
+                <div class="alert alert-success">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <strong>Есть!</strong> Вопрос добавлен
+                </div>
+            {% endif %}
+
+            {% if ok_login %}
+                    <div class="alert alert-success">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        Авторизован
+                    </div>
+            {% endif %}
+
+            {% if ok_register %}
+                    <div class="alert alert-success">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        <strong>Отличные новости!</strong> Можете задавать вопросы г-ну Пупкину!
+                    </div>
+            {% endif %}
+
+            {% endblock %}
+
+
+                {% if q_list %}
+
+                    {% for q in q_list %}
+                        <dl>
+                            <div class="well">
+                            <dt><h2>{{ q.header }}</h2></dt>
+
+                            <dd>
+                                <p>  {{ q.text }}</p>
+                                <div class="btn-group">
+                                    {% if anonim %}
+                                    <a href="/add/answer/{{ q.id }}/anonim/" class="btn">Ответы</a>
+                                    {% endif %}
+
+                                    {% if not anonim %}
+                                        <a href="/add/answer/{{ q.id }}/" class="btn">Ответы</a>
+                                    {% endif %}
+
+                                <p><a href="/accounts/profile/{{ q.creator_id }}/" class="btn btn-link">Автор</a></p>
+                                <span class="label label">Добавлен {{q.creationdate}}</span>
+                            </dd>
+                          </div>
+                        </dl>
+                    {% endfor %}
+
+                {% else %}
+                    <h4><p class="text-error">Вопросов пока нет</p></h4>
+                {% endif %}
+
+            {% endblock %}
+        </div>
+   
+</div>
+
+
+{% block footer %}
+<footer>
+    <div class="span9 offset1">
+        <div class="pagination">
+        <span class="step-links">
+        {% if q_list.has_previous %}
+            <a href="?page={{ q_list.previous_page_number }}">Назад</a>
+        {% endif %}
+
+        <span class="current">
+            Страница {{ q_list.number }} из {{ q_list.paginator.num_pages }}.
+        </span>
+
+        {% if q_list.has_next %}
+            <a href="?page={{ q_list.next_page_number }}">Далее</a>
+        {% endif %}
+    </span>
+        </div>
+   </div>
+<p>&copy; Web 2013</p>
+</footer>
+{% endblock %}
+
+{# <script src="http://code.jquery.com/jquery.js"></script> #}
+<script src="/jquery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+

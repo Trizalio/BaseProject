@@ -1,0 +1,25 @@
+{% extends "News.html" %}
+{% block part %}
+            <li><a href="/">Новости</a></li>
+            <li class="active"><a href="/projects">Проекты</a></li>
+            <li><a href="/profile/{{ user.owner.id }}/">Личный кабинет</a></li>
+{% endblock %}
+{% block body %}
+        <div class="col-xs-12 col-sm-9">
+             {% if p_list %}
+					<!-- <dl> -->
+              {% for p in p_list %}
+              	<div class="well">
+                	<h2>{{ p.name }}</h2>
+		        		<p>{{ p.text }}<a href="#123">Подробнее>></a></p>
+		        		<!-- <p>{{ n.workstatus }} <a href="profile/{{ n.creator.owner_id }}/">{{ n.creator.owner }}</a></p> -->
+		        		<p class="text-muted">{{ p.creationdate }}</p>
+		        	</div>
+		        <!-- </dl> -->
+               {% endfor %}
+             {% else %}
+              <h4><p class="text-error">Проектов пока нет</p></h4>
+             {% endif %}
+        </div>
+{% endblock %}
+

@@ -1,0 +1,12 @@
+import os, sys
+
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "settings")
+
+# В python path добавляется директория проекта
+path = '/home/base_project/engine/'
+if path not in sys.path:
+    sys.path.append(path)
+
+# Запуск wsgi-обработчика
+from helloworld.wsgi import HelloWorldApplication
+application = HelloWorldApplication(application)

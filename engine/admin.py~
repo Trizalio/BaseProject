@@ -1,0 +1,6 @@
+from models import news, comment, userinfo, 123
+#from django.contrib import admin
+
+admin.site.register(news)
+admin.site.register(comment)
+admin.site.register(userinfo)

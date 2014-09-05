@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <title>Bootstrap 101 Template</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="css/starter-template.css" rel="stylesheet">
+
+  </head>
+  <body>
+    
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Открыть</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Система базы</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Новости</a></li>
+            <li><a href="#about">Проекты</a></li>
+            <li><a href="#contact">Личный кабинет</a></li>
+          </ul>
+          
+          <!-- <form class="navbar-form navbar-right" role="form">
+            <div class="form-group">
+              <input placeholder="Логин" class="form-control" type="text">
+            </div>
+            <div class="form-group">
+              <input placeholder="Пароль" class="form-control" type="password">
+            </div>
+            <button type="submit" class="btn btn-success">Войти</button>
+          </form> -->
+          
+          
+          <div class="navbar-form navbar-right">
+          <ul class="nav navbar-nav">
+				<!-- <li><a href="#contact">Василий Резцов</a></li> -->
+				<li><a href="#contact">Выйти</a></li>  
+          	<button class="btn btn-danger">Выйти</button>
+          	<button class="btn btn-danger">Выйти</button>
+          	
+          </ul>
+          </div> 
+          
+        </div><!--/.navbar-collapse -->
+      </div>
+    </div>
+   
+
+    <div class="container" >
+    <hr>
+      <div class="row row-offcanvas row-offcanvas-right">
+        <div class="col-xs-12 col-sm-9">
+          <p class="pull-right visible-xs">
+            <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
+          </p>
+          <div class="jumbotron">
+            <h1>Внимание, сотрудники базы!</h1>
+            <p>В связи с техническими проблемами системы регенерации воздуха содержание кислорода
+             в воздухе базы снижено. Сократите свою физическую активность до минимума, отслеживайте
+              своё состояние, а так же состояние окружающих людей, о любых отклонениях от нормы немедленно
+               сообщайте руководству.</p>
+              <p>Глава отдела тех. поддержки базы - <a href="#123">Николай Ефремов</a></p>
+              <p>2114-04-23 10:18</p>
+           </div>
+      		<div class="well">
+		        <h2>Прорыв в исследовании технологий марсиан</h2>
+		        <p>Нашей исслоедовательской группе удалось добиться слабого электрического отклика от
+		         объекта К3-782 при воздействии на него сильным переменным магнитным полем высокой частоты. 
+		         В процессе эксперимента мы мы последовательно проверяли воздействие переменных магнитных 
+		         полей варьируя частоту и постепенно увеличивая напряжённость магнитного поля и при 
+		         определённом их сочетании в объекте возник слабый электрический ток. К сожалению, 
+		         повторение опыта не дало результатов.
+		         <a href="#123">Подробнее>></a>
+		        </p>
+		        <p>
+		        		Глава проекта <a href="#123">"Исследования марсианских артефактов"</a> - 
+		        		<a href="#123">Александр Васильев</a>
+		        </p>
+		        <p>
+		        		2114-04-19 14:32
+		        </p>
+		        <h2>Терраформирование планеты завершено на 7.00 %</h2>
+		        <p>Наша работа достигла очередного юбилея, теперь это 7 процентов. Мы ещё на шаг 
+		        приблизились к колонизации это прекрасной планеты. Это наше общее достижение, 
+		        каждого техника и инженера, каждого биолога и физика. Спасибо вам всем! 
+		         <a href="#123">Подробнее>></a>
+		        </p>
+		        <p>
+		        		Глава базы - 
+		        		<a href="#123">Пётр Дунаев</a>
+		        </p>
+		        <p>
+		        		2114-02-26 11:37
+		        </p>
+        		</div>
+        </div><!--/span-->
+        <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+          <div class="list-group">
+            <a class="list-group-item">Уровень кислорода <b>18</b>%</a>
+            <a class="list-group-item">Температура <b>24</b> градуса Цельсия</a>
+            <a class="list-group-item">Солнечная активность <b>умеренная</b></a>
+            <!-- <a href="#" class="list-group-item active">Link</a> -->
+          </div>
+        </div><!--/span-->
+      </div><!--/row-->   
+   
+    <div id="footer">
+      <div class="container">
+        <p class="text-muted">2114-04-26 18:49</p>
+      </div>
+    
+    <!-- Bootstrap core JavaScript-->
+    <script src="js/jquery-1.js"></script>
+    <script src="js/bootstrap.js"></script>
+  </body>
+</html>

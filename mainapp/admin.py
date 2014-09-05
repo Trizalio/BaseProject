@@ -1,0 +1,9 @@
+from django.contrib import admin
+from mainapp.models import news, comment, userinfo, baseinfo, project, projectmember
+
+admin.site.register(news)
+admin.site.register(comment)
+admin.site.register(userinfo)
+admin.site.register(baseinfo)
+admin.site.register(project)
+admin.site.register(projectmember)

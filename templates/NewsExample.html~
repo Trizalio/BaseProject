@@ -1,0 +1,67 @@
+{% extends "News.html" %}
+          {% block login %}
+          <form class="navbar-form navbar-right" role="form" action='.' method='post'>
+          	{% csrf_token %}
+            <div class="form-group">
+              <input placeholder="Логин" class="form-control" type="text" name="username">
+            </div>
+            <div class="form-group">
+              <input placeholder="Пароль" class="form-control" type="password" name="password">
+            </div>
+            <button type="submit" class="btn btn-success">Войти</button>
+          </form>
+{% endblock %}
+{% block body %}
+        <div class="col-xs-12 col-sm-9">
+          
+          
+         {% if loginfault %}
+          <div class="alert alert-danger alert-dismissable">
+			  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+			  <strong>Ошибка!</strong> Не удалось войти в систему базы. Введённая пара логин/пароль не зарегистрирована.
+			 </div>
+         {% endif %}
+         
+         {% if logindisabled %}
+          <div class="alert alert-warning alert-dismissable">
+			  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+			  <strong>Ошибка!</strong> Ваш аккаунт заблокирован. Обратитесь к администратору.
+			 </div>
+         {% endif %}
+         
+          <div class="jumbotron">
+            <h1>Важное объявление!</h1>
+            <p>Текст, поясняющий, почему, несмотря на текущую ситуацию, все должны считать, что всё хорошо.</p>
+              <p>Должность важного чувака - <a href="#123">Имя важного чувака</a></p>
+              <p>Время написания новости.</p>
+           </div>
+      		<div class="well">
+		        <h2>Новость по одному и проектов</h2>
+		        <p>Подробное и никому не интересное описание того, как долгим  кропотливым трудом сотрудникам базы
+		        удалось достичь хоть каких-то якобы результатов по одному из абсолютно тупиковых проектов.
+		         <a href="#123">Подробнее>></a>
+		        </p>
+		        <p>
+		        		Глава тупикового проекта <a href="#123">"Название тупикового проекта"</a> - 
+		        		<a href="#123">Руководитель тупикового проекта</a>
+		        </p>
+		        <p>
+		        		Время написания новости.
+		        </p>
+		        <h2>Какая-то новость, которая должна подбодрить всех на станции</h2>
+		        <p>Пончики в столовой теперь обсыпают пудрой с двух сторон! Длительное описание того, как удалось
+		        достичь таких поразительных результатов. Интервью со специаистами, мнение ркуоводителей, другая пафосная
+		        ерунда. 
+		         <a href="#123">Подробнее>></a>
+		        </p>
+		        <p>
+		        		Долхжность какого-то важного чувака- 
+		        		<a href="#123">Какой-то важный чувак</a>
+		        </p>
+		        <p>
+		        		Время написания новости.
+		        </p>
+        		</div>
+        </div>
+{% endblock %}
+

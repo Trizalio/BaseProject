@@ -1,0 +1,33 @@
+{% extends "News.html" %}
+{% block part %}
+            <li><a href="/">Новости</a></li>
+            <li><a href="/projects">Проекты</a></li>
+            <li class="active"><a href="/profile/{{ user.owner.id }}/">Личный кабинет</a></li>
+{% endblock %}
+{% block body %}
+        <div class="col-xs-12 col-sm-9">
+        	<div class="col-xs-12 col-sm-4">
+      		<div class="well">
+      		<p>Импланты: </p>
+      		<p>Группа крови: </p>
+      		<p>Т.д.: </p>
+        		</div>
+        </div>
+        	<div class="col-xs-12 col-sm-4">
+      		<div class="well">
+      		<p>Имя: {{ profile.name }}</p>
+      		<p>Фамилия: {{ profile.surname }}</p>
+      		<p>Возраст: {{ profile.age }}</p>
+      		<p>Пол: {% if profile.male %}Мужской{% endif %}{% if not profile.male %}Женский{% endif %}</p>
+        		</div>
+        </div>
+        	<div class="col-xs-12 col-sm-4">
+      		<div class="well">
+      			<p>Должность: {{ profile.workstatus }}</p>
+      			<p>Класс допуска: </p>
+      			<p>Лабуда: </p>
+        		</div>
+         </div>
+        </div>
+{% endblock %}
+
